@@ -15,7 +15,6 @@ auto main(int argc, char *argv[]) -> int {
 
     for (fs::path p : args) {
         if (!fs::exists(p)) {
-            // std::cerr << "Error: " << p << " does not exists.\n";
             continue;
         } else if (fs::is_regular_file(p)) {
             targets.push_back(p);
@@ -28,7 +27,6 @@ auto main(int argc, char *argv[]) -> int {
         }
     }
 
-    //TODO: start csv
     std::ofstream csv;
     csv.open("results.csv");
     csv << "FILE, MERGE_SORT(ms), SUPER_MERGE(ms),\n";
@@ -65,7 +63,6 @@ auto main(int argc, char *argv[]) -> int {
         auto span_sm = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(t4 - t3);
         std::cout << "\tsupermerge: " << span_sm.count() << " ms.\n";
 
-        //TODO: add to csv file
         csv << p << ',' << span_ms.count() << ',' << span_sm.count() << ",\n";
 
         delete[] arr;
@@ -73,7 +70,6 @@ auto main(int argc, char *argv[]) -> int {
     }
     std::cerr << "\33[2K\rDone.\n";
 
-    //TODO: end csv
     csv.close();
 
     return 0;
