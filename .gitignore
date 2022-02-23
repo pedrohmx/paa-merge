@@ -1,5 +1,9 @@
-#Workspace
+# Workspace
 .vscode/
 
-#Build
+# Build
 *.x
+
+# Data
+*.txt
+*.7z
