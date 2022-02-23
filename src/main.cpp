@@ -28,9 +28,10 @@ auto main(int argc, char *argv[]) -> int {
         }
     }
 
+    int count = 0;
     for (auto p : targets){
         std::cout << "Target: " << p << '\n';
-        std::cerr << "Loading file.\n";
+        std::cerr << "Loading file (" << ++count << '/' << targets.size() << "): " << p << "\n";
 
         std::ifstream in;
         in.open(p);
@@ -41,23 +42,23 @@ auto main(int argc, char *argv[]) -> int {
         while (in >> aux_i)
             aux_vec.push_back(aux_i);
 
-        std::cerr << "Allocating memory\n";
+        std::cerr << "\tAllocating memory\n";
         auto arr = new int[aux_vec.size()];
 
-        std::cerr << "Copying memory for mergesort.\n";
+        std::cerr << "\tCopying memory for mergesort.\n";
         std::copy(aux_vec.begin(),aux_vec.end(),arr);
         
-        std::cerr << "Starting mergesort\n";
+        std::cerr << "\tStarting mergesort\n";
         auto t1 = std::chrono::steady_clock::now();
         paa::merge_sort(arr,0,aux_vec.size());
         auto t2 = std::chrono::steady_clock::now();
         auto span = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(t2 - t1);
         std::cout << "\tmergesort: " << span.count() << " ms.\n";
 
-        std::cerr << "Copying memory for supermerge.\n";
+        std::cerr << "\tCopying memory for supermerge.\n";
         std::copy(aux_vec.begin(),aux_vec.end(),arr);
 
-        std::cerr << "Starting supermerge\n";
+        std::cerr << "\tStarting supermerge\n";
         t1 = std::chrono::steady_clock::now();
         paa::merge_sort(arr,0,aux_vec.size());
         t2 = std::chrono::steady_clock::now();
