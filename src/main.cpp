@@ -60,7 +60,7 @@ auto main(int argc, char *argv[]) -> int {
 
         std::cerr << "\tStarting supermerge\n";
         t1 = std::chrono::steady_clock::now();
-        paa::merge_sort(arr,0,aux_vec.size());
+        paa::super_merge_sort(arr,0,aux_vec.size());
         t2 = std::chrono::steady_clock::now();
         span = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(t2 - t1);
         std::cout << "\tsupermerge: " << span.count() << " ms.\n";
