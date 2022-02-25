@@ -33,7 +33,7 @@ auto main(int argc, char *argv[]) -> int {
 
     int count = 0;
     for (auto p : targets){
-        std::cout << "Target: " << p << '\n';
+        //std::cout << "Target: " << p << '\n';
         std::cerr << "\33[2K\rLoading file (" << ++count << '/' << targets.size() << "): " << p;
 
         std::ifstream in;
@@ -53,7 +53,7 @@ auto main(int argc, char *argv[]) -> int {
         paa::merge_sort(arr,0,aux_vec.size());
         auto t2 = std::chrono::steady_clock::now();
         auto span_ms = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(t2 - t1);
-        std::cout << "\tmergesort: " << span_ms.count() << " ms.\n";
+        //std::cout << "\tmergesort: " << span_ms.count() << " ms.\n";
 
         std::copy(aux_vec.begin(),aux_vec.end(),arr);
 
@@ -61,7 +61,7 @@ auto main(int argc, char *argv[]) -> int {
         paa::super_merge_sort(arr,0,aux_vec.size());
         auto t4 = std::chrono::steady_clock::now();
         auto span_sm = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(t4 - t3);
-        std::cout << "\tsupermerge: " << span_sm.count() << " ms.\n";
+        //std::cout << "\tsupermerge: " << span_sm.count() << " ms.\n";
 
         csv << p << ',' << span_ms.count() << ',' << span_sm.count() << ",\n";
 
