@@ -63,7 +63,7 @@ auto main(int argc, char *argv[]) -> int {
         auto span_sm = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(t4 - t3);
         //std::cout << "\tsupermerge: " << span_sm.count() << " ms.\n";
 
-        csv << p << ',' << span_ms.count() << ',' << span_sm.count() << ",\n";
+        csv << p << ',' << span_ms.count() << ',' << span_sm.count() << "\n";
 
         delete[] arr;
         in.close();
